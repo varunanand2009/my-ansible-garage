@@ -1,0 +1,17 @@
+---
+
+- name: Install Packages
+  hosts: RHEL
+  become: yes
+  tasks:
+
+    - name: Install httpd packages on remote hosts
+      yum:
+        name: httpd
+        state: present
+
+    - name: Make sure httpd is running 
+      systemd:
+        name: httpd
+        enabled: yes
+        state: started

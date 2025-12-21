@@ -1,0 +1,12 @@
+---
+
+- name: Create a directory
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Creaate a directory on the remote server
+      file:
+        path: /home/varunanand/my-playbook practise
+        state: directory
+        mode: '0777'

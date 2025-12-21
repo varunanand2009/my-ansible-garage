@@ -1,0 +1,14 @@
+---
+
+- name: Baseline check
+  hosts: RHEL
+  gather_facts: no
+  tasks:
+
+    - name: check os version
+      command: grep -E '^(NAME|VERSION_ID)' /etc/os-release
+      register: os_version
+
+    - name: Display os version
+      debug:
+        msg: "{{ os_version.stdout_lines }}"
