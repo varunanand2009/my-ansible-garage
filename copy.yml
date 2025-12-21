@@ -1,0 +1,11 @@
+---
+
+- name: Copying file to remote host
+  hosts: RHEL
+  become: yes
+  tasks:
+
+    - name: copy a file from ansible node to control node
+      copy:
+        src: /home/varunanand/inventory.ini
+        dest: /home/varunanand/

@@ -1,0 +1,14 @@
+---
+
+- name: Copy file
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Copy a file with changed permission
+      copy:
+        src: /home/varunanand/hostnamechange-playbook.yml
+        dest: /home/varunanand
+        owner: varunanand
+        group: varunanand
+        mode: '0777'

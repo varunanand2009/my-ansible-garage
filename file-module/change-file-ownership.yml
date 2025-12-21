@@ -1,0 +1,14 @@
+---
+
+- name: Changing file ownership
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+
+    - name: Change file ownership
+      file:
+        path: /home/varunanand/inventory.ini
+        owner: varunanand
+        group: varunanand
+        mode: '0777'

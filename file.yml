@@ -1,0 +1,15 @@
+---
+
+- name: Create a test file on remote host
+  hosts: RHEL
+  become: yes
+  tasks:
+
+    - name: Create a empty file inside the /home/varunanand
+      file:
+        path: /home/varunanand/test.txt
+        state: touch
+        owner: varunanand
+        group: varunanand
+        mode: '0777'
+

@@ -1,0 +1,11 @@
+---
+
+- name: Delete a exising directory recursively
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Delete existing directory
+      file:
+        path: /home/varunanand/devops
+        state: absent

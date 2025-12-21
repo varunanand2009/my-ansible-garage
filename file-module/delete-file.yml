@@ -1,0 +1,11 @@
+---
+
+- name: Delete an existing file
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: delete existing file test 
+      file:
+        path: /home/varunanand/devops/
+        state: absent

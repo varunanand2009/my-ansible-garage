@@ -1,0 +1,14 @@
+---
+
+- name: Create a empty file in the existing directory
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Create a empty file under /home/varunanand/devops/test.txt
+      file:
+        path: /home/varunanand/devops/test.txt
+        state: touch
+        mode: '0775'
+        owner: varunanand
+        group: varunanand

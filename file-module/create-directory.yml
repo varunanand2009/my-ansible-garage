@@ -1,0 +1,14 @@
+---
+
+- name: Create directory on remote server
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Create a directory devops on remote server
+      file:
+        path: /home/varunanand/devops
+        state: directory
+        mode: '0775'
+        owner: varunanand
+        group: varunanand

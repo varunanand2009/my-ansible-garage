@@ -1,0 +1,11 @@
+---
+
+- name: Install telnet package on remote server
+  hosts: RHEL
+  become: yes
+  tasks:
+
+    - name: Install the telnet on remote hosts
+      yum:
+        name: telnet
+        state: present

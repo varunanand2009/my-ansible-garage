@@ -1,0 +1,11 @@
+---
+- name: Copying a directory recursively
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Copying a directory recursively from control to managed node
+      copy:
+
+        src: /home/varunanand/my-playbooks-practise/file-module/
+        dest: /root

@@ -1,0 +1,17 @@
+---
+
+- name: Copy content
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: create backup of the motd
+      copy:
+        src: /etc/motd
+        dest: /etc/motd_bkp
+        backup: yes
+
+    - name: Copy content on the file
+      copy:
+        dest: /etc/motd
+        content: "Authorized Uses Only!!!!!"

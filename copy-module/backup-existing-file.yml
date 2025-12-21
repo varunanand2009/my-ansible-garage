@@ -1,0 +1,13 @@
+---
+
+- name: Backup of a file
+  hosts: [RHEL]
+  become: yes
+  tasks:
+
+    - name: Backup of the file
+      copy:
+
+        src: /etc/fstab
+        dest: /etc/fstab_bkp_before_change
+        backup: yes
