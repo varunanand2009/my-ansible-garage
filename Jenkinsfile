@@ -1,22 +1,29 @@
 pipeline {
     agent any
 
+    parameters {
+        string(
+            name: 'USERNAME',
+            description: 'Linux username to create on RHEL servers'
+        )
+    }
+
     stages {
-        stage('Checkout') {
+
+        stage('Checkout Code') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Create User on RHEL Servers') {
             steps {
-                echo "Build stage running"
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo "Test stage running"
+                sh """
+                ansible-playbook \
+                -i inventory/hosts \
+                playbooks/create_user.yml \
+                -e username=${params.USERNAME}
+                """
             }
         }
     }
