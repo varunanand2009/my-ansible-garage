@@ -1,0 +1,15 @@
+- name: Create Linux user
+  hosts: RHEL
+  become: yes
+  vars:
+    user_name: "{{ username }}"
+  tasks:
+    - name: Create user
+      user:
+        name: "{{ user_name }}"
+        state: present
+        shell: /bin/bash
+
+    - name: Print confirmation
+      debug:
+        msg: "User {{ user_name }} created successfully"
