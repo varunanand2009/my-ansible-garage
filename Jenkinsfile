@@ -4,7 +4,7 @@ pipeline {
     parameters {
         string(
             name: 'USERNAME',
-            description: 'Linux username to create on RHEL servers'
+            description: 'Linux username to create'
         )
     }
 
@@ -16,13 +16,23 @@ pipeline {
             }
         }
 
-        stage('Create User on RHEL Servers') {
+        stage('Debug Workspace') {
+            steps {
+                sh '''
+                echo "===== Workspace content ====="
+                pwd
+                ls -l
+                '''
+            }
+        }
+
+        stage('Create User') {
             steps {
                 sh """
                 ansible-playbook \
-                -i inventory/hosts \
-                playbooks/create_user.yml \
-                -e username=${params.USERNAME}
+                -i inventory.ini \
+                create_user.yml \
+                -e "username=${params.USERNAME}"
                 """
             }
         }
